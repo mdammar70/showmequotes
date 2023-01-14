@@ -23,10 +23,10 @@ function complete() {
 async function getQuote() {
   loading();
   // We need to use a Proxy URL to make our API call in order to avoid a CORS error
-  //const proxyUrl = 'https://sleepy-woodland-21745.herokuapp.com/';
+  const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
   const apiUrl = 'https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
   try {
-    const response = await fetch(apiUrl);
+    const response = await fetch(proxyUrl + apiUrl);
     const data = await response.json();
     // Check if Author field is blank and replace it with 'Unknown'
     if (data.quoteAuthor === '') {
